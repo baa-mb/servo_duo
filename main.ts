@@ -3,6 +3,7 @@ input.onButtonPressed(Button.A, function () {
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "A") {
+        basic.showString("A")
         radio.raiseEvent(
         EventBusSource.MICROBIT_ID_BUTTON_A,
         EventBusValue.MICROBIT_BUTTON_EVT_CLICK
