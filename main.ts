@@ -1,6 +1,14 @@
 input.onButtonPressed(Button.A, function () {
     automat = 1
 })
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == "A") {
+        radio.raiseEvent(
+        EventBusSource.MICROBIT_ID_BUTTON_A,
+        EventBusValue.MICROBIT_BUTTON_EVT_CLICK
+        )
+    }
+})
 input.onButtonPressed(Button.B, function () {
     automat = 0
 })
@@ -13,6 +21,7 @@ basic.showLeds(`
     . . . . .
     `)
 automat = 0
+radio.setGroup(24)
 basic.forever(function () {
     if (automat) {
         basic.showLeds(`
@@ -37,6 +46,14 @@ basic.forever(function () {
             pins.servoWritePin(AnalogPin.P1, 180 - 30 * i)
             basic.pause(2000)
         }
+        pins.servoWritePin(AnalogPin.P1, 90)
+        basic.showLeds(`
+            . . # . .
+            . # . . .
+            # . . . .
+            . # . . .
+            . . # . .
+            `)
     }
     automat = 0
 })
