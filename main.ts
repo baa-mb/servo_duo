@@ -7,14 +7,14 @@ input.onButtonPressed(Button.AB, function () {
 
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "A") {
-        basic.showString("A")
+        basic.showString(receivedString)
         automat = 1
         control.raiseEvent(
             EventBusSource.MICROBIT_ID_BUTTON_A,
             EventBusValue.MICROBIT_BUTTON_EVT_CLICK
         )
     } else if (receivedString == "B") {
-        basic.showString("B")
+        basic.showString(receivedString)
         automat = 2
         control.raiseEvent(
             EventBusSource.MICROBIT_ID_BUTTON_B,
@@ -68,7 +68,7 @@ basic.forever(function () {
             pins.servoWritePin(AnalogPin.P1, 180 - 30 * i)
             basic.pause(2000)
         }
-        pins.servoWritePin(AnalogPin.P1, 90)
+        pins.servoWritePin(AnalogPin.P1, 85)
         basic.showLeds(`
             . . # . .
             . # . . .
@@ -77,4 +77,5 @@ basic.forever(function () {
             . . # . .
             `)
     }
+    automat=0
 })
